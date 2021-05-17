@@ -196,13 +196,13 @@
               </tbody>
               <tbody class="text-center">
               <td scope="row">2</td>
-              <td>?</td>
+              <td>30 Juni 2021</td>
               <td>Pengumuman</td>
               <td>Akun Pengguna atau Sekolah Masing-Masing Yang Telah Didaftarkan</td>
               </tbody>
               <tbody class="text-center">
                 <td scope="row">3</td>
-                <td>?</td>
+                <td>01 - 03 Juli</td>
                 <td>Pendaftaran Ulang</td>
                 <td>Akun Pengguna atau Sekolah Masing-Masing Yang Telah Didaftarkan</td>
                 </tbody>

@@ -132,7 +132,7 @@
               <?php endforeach; ?>
             </div>
             <div class="form-group" <?=$zonasi;?>>
-              <label for=""><b>UPLOAD KK (PDF) & SURAT KETERANGAN KESIAPAN BELAJAR (Bila Dibawah 6 Tahun) :</b></label>
+              <label for=""><b>UPLOAD KK (PDF) & SURAT KETERANGAN KESIAPAN BELAJAR (Bila Umur 5 Tahun 6 Bulan - 6 Tahun) :</b></label>
               <?php foreach ($berkas as $data) : ?>
               <input hidden class="form-control" type="text" name="up_zonasi1_lama" value="<?=$data->up_zonasi1;?>">
               <?php endforeach; ?>
@@ -149,7 +149,7 @@
             </div>
 
             <div class="form-group" <?=$afirmasi;?>>
-              <label for=""><b>UPLOAD KIP/PKH DAN KK (DIGABUNG DALAM 1 PDF) & SURAT KETERANGAN KESIAPAN BELAJAR (Bila Dibawah 6 Tahun) : :</b></label>
+              <label for=""><b>UPLOAD KIP/PKH DAN KK (DIGABUNG DALAM 1 PDF) & SURAT KETERANGAN KESIAPAN BELAJAR (Bila Umur 5 Tahun 6 Bulan - 6 Tahun) : :</b></label>
               <?php foreach ($berkas as $data) : ?>
               <input hidden class="form-control" type="text" name="up_afirmasi1_lama" value="<?=$data->up_afirmasi1;?>">
               <?php endforeach; ?>
@@ -163,7 +163,7 @@
             </div>
 
             <div class="form-group" <?=$pindahan;?>>
-              <label for=""><b>UPLOAD SURAT PINDAH DINAS ORANG TUA DAN KK/SURAT KETERANGAN DOMISILI (DIGABUNG DALAM 1 PDF) & SURAT KETERANGAN KESIAPAN BELAJAR (Bila Dibawah 6 Tahun) : :</b></label>
+              <label for=""><b>UPLOAD SURAT PINDAH DINAS ORANG TUA DAN KK/SURAT KETERANGAN DOMISILI (DIGABUNG DALAM 1 PDF) & SURAT KETERANGAN KESIAPAN BELAJAR (Bila Umur 5 Tahun 6 Bulan - 6 Tahun) : :</b></label>
               <?php foreach ($berkas as $data) : ?>
               <input hidden class="form-control" type="text" name="up_pindahan1_lama" value="<?=$data->up_pindahan1;?>">
               <?php endforeach; ?>

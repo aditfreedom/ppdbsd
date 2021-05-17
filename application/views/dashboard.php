@@ -73,9 +73,7 @@
             </div>
           </div>
 
-                    <!-- ./col -->
-        <div class="col-lg-3 col-3">
-            <!-- small box -->
+        <!-- <div class="col-lg-3 col-3">
             <div class="small-box bg-success">
               <div class="inner">
               <?php  
@@ -88,7 +86,7 @@
                 <i class="fa fa-user-graduate"></i>
               </div>
             </div>
-          </div>
+          </div> -->
 
           <div class="col-lg-3 col-3">
             <!-- small box -->
@@ -135,8 +133,7 @@
             </div>
           </div>
 
-          <div class="col-lg-3 col-3">
-            <!-- small box -->
+          <!-- <div class="col-lg-3 col-3">
             <div class="small-box bg-info">
               <div class="inner">
                 <h3><?php echo $prestasi;?></h3>
@@ -148,7 +145,7 @@
                 <i class="fa fa-user-graduate"></i>
               </div>
             </div>
-          </div>
+          </div> -->
 
           <div class="col-lg-3 col-3">
             <!-- small box -->
