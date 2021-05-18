@@ -53,6 +53,10 @@
               <ul>
               <li>Fotocopy Berkas Yang Telah Di Upload Pada Menu <b>Upload Berkas</b></li>
               <li>Print Out Formulir Pendaftaran <a href="<?=base_url('user/cetak_formulir');?>" class="btn btn-success rounded-pill">Download Disini</a></li>
+              <li>Berkas Di Satukan Ke Dalam Map :</li>
+              <b><a href="#" class="btn btn-primary text-decoration-none rounded-pill"><b>Zonasi :  Map Biru</b></a> 
+                  <a href="#" class="btn btn-warning text-dark text-decoration-none rounded-pill"><b>Afirmasi :  Map Kuning</b></a> 
+                  <a href="#" class="btn btn-danger text-decoration-none rounded-pill"><b>Perpindahan Tugas Orang Tua :  Map Merah</b></a> </b>
               </ul>
             </div>
 
