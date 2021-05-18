@@ -15,7 +15,7 @@
     <title>PPDB ONLINE BIREUEN</title>
   </head>
   <div class="limiter">
-  <body style="background-image: url(<?php echo base_url('assets/img/testimonials-bg.jpg');?>);background-size: cover;}">
+  <body style="background-image: url(<?php echo base_url('assets/img/testimonials-bg2.jpeg');?>);background-size: cover;}">
   <div class="container">
     <div class="row">
       <div class="col-sm-9 col-md-7 col-lg-5 mx-auto">
@@ -23,7 +23,7 @@
           <div class="card-body">
             <img src="<?=base_url()?>assets/img/favicon.png" class="mx-auto d-block" width="100px">
             <h6 class="text-center" style="margin-top:5px;"><b>PPDB DARING<br>DISDIKBUD KAB. BIREUEN<br>TA.2021/2022</b></h6><br>
-            <h5 class="text-center"><b>LOGIN PENGGUNA</b></h5>
+            <h5 class="text-center"><b>LOGIN SISWA</b></h5>
 
             <?php echo form_open('hal/login_aksi');?>
               <div class="form-label-group">

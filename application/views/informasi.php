@@ -66,7 +66,7 @@
           <li class="active"><a href="#" >Beranda</a></li>
           <!-- <li><a href="#tentang">Informasi</a></li> -->
           <li><a href="#about">Waktu Pendaftaran</a></li>
-          <li><a href="#jalur">Jenis</a></li>
+          <li><a href="#jalur">Jalur</a></li>
           <li><a href="#portfolio">Jadwal Seleksi</a></li>
           <li><a href="#team">Alur</a></li>
           <li><a href="<?=base_url('hal/progress_data')?>">Progres Data</a></li>
@@ -118,7 +118,7 @@
         <div class="section-title">
           <h2>Pendaftaran</h2>
           <h3>Waktu <span>Pendaftaran</span></h3><br>
-          <h1 style="margin-bottom:0px;">20 Mei - 03 Juli 2021</h1>
+          <h1 style="margin-bottom:0px;">20 Mei - 26 Juni 2021</h1>
           <h3 id="demo" style="margin-top:0px;font-size:30px;color:#FF0064;"></h3>
         </div>
         </div>
@@ -325,5 +325,6 @@ $('#example').dataTable({
     "bAutoWidth": false });
 });
   </script>
+
 </html>
 

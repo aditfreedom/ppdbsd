@@ -19,7 +19,7 @@
     <form action="<?=base_url('admin/updatelulus')?>" method="post">
     <?php foreach ($lulus as $data) : ?>
         <div class="form-group">
-            <label for="">Approve Formulir</label>
+            <label for="">Approve Kelulusan</label>
             <select class="form-control form-control" name="approve_lulus">
               <option selected hidden><?php echo $data->approve_lulus;?></option>
               <option>Antrian</option>
