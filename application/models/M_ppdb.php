@@ -743,7 +743,7 @@ class M_ppdb extends CI_Model
 
     public function updatepassword($username, $password, $id)
     {
-        $this->db->query("UPDATE pengguna SET username='$username',s password='$password' WHERE id_pesertadidik = '$id'");
+        $this->db->query("UPDATE pengguna SET username='$username', password='$password' WHERE id_pesertadidik = '$id'");
     }
 
     public function updatefinalisasi($status, $id_pesertadidik)
