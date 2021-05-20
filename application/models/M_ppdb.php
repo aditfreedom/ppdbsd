@@ -133,7 +133,7 @@ class M_ppdb extends CI_Model
              LEFT JOIN data_sd ON datasiswa.id_sekolah = data_sd.id_sekolah
              LEFT JOIN sekolah_tujuan ON datasiswa.id_pesertadidik = sekolah_tujuan.id_pesertadidik
              LEFT JOIN data_smp ON sekolah_tujuan.id_sekolah = data_smp.id_sekolah
-             WHERE pengguna.status = '1'");
+             WHERE pengguna.status = '1' AND pengguna.approve_daftarulang='Diterima'");
      }
 
 

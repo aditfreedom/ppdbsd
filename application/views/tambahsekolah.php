@@ -122,8 +122,8 @@
         <div class="form-group">
         <label for=""><b>BENTUK PENDIDIKAN :</b></label>
         <select class="form-control"  name="bentuk_pendidikan">
-        <option value="5">SD</option>
-        <option value="9">MI/MIN</option>
+        <option value="1">TK/RA</option>
+        <option value="2">PAUD/KB</option>
         <option value="45">LAINNYA</option>
         </select>
         </div>  
