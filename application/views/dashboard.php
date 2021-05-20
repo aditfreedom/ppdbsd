@@ -21,7 +21,7 @@
       <div class="container-fluid">
         <!-- Small boxes (Stat box) -->
         <div class="row">
-        <div class="col-lg-4 col-4">
+        <div class="col-lg-3 col-3">
             <!-- small box -->
             <div class="small-box bg-success">
               <div class="inner">
@@ -38,7 +38,7 @@
           </div>
           <!-- ./col -->
 
-        <div class="col-lg-4 col-4">
+        <div class="col-lg-3 col-3">
             <!-- small box -->
             <div class="small-box bg-success">
               <div class="inner">
@@ -55,7 +55,7 @@
             </div>
           </div>
           <!-- ./col -->
-        <div class="col-lg-4 col-4">
+        <div class="col-lg-3 col-3">
             <!-- small box -->
             <div class="small-box bg-success">
               <div class="inner">
@@ -66,6 +66,24 @@
 
 
                 <p>Sisa Pindahan Orang Tua</p>
+              </div>
+              <div class="icon">
+                <i class="fa fa-user-graduate"></i>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-lg-3 col-3">
+            <!-- small box -->
+            <div class="small-box bg-success">
+              <div class="inner">
+              <?php  
+	             foreach ($kuota as $data) : ?>
+                <h3><?php echo $data->sisa_umum;?></h3>
+                <?php endforeach ;?>
+
+
+                <p>Sisa Umum</p>
               </div>
               <div class="icon">
                 <i class="fa fa-user-graduate"></i>
@@ -88,7 +106,7 @@
             </div>
           </div> -->
 
-          <div class="col-lg-4 col-4">
+          <div class="col-lg-3 col-3">
             <!-- small box -->
             <div class="small-box bg-info">
               <div class="inner">
@@ -103,7 +121,7 @@
             </div>
           </div>
 
-          <div class="col-lg-4 col-4">
+          <div class="col-lg-3 col-3">
             <!-- small box -->
             <div class="small-box bg-info">
               <div class="inner">
@@ -118,7 +136,7 @@
             </div>
           </div>
 
-          <div class="col-lg-4 col-4">
+          <div class="col-lg-3 col-3">
             <!-- small box -->
             <div class="small-box bg-info">
               <div class="inner">
@@ -126,6 +144,21 @@
 
 
                 <p>Pendaftar Pindahan</p>
+              </div>
+              <div class="icon">
+                <i class="fa fa-user-graduate"></i>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-lg-3 col-3">
+            <!-- small box -->
+            <div class="small-box bg-info">
+              <div class="inner">
+                <h3><?php echo $umum;?></h3>
+
+
+                <p>Pendaftar Umum</p>
               </div>
               <div class="icon">
                 <i class="fa fa-user-graduate"></i>

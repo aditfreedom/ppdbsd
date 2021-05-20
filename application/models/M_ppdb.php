@@ -580,6 +580,17 @@ class M_ppdb extends CI_Model
         return $result->num_rows();
     }
 
+
+    public function tampilumum($id)
+    {
+        $result = $this->db->query("SELECT * FROM pengguna
+                                    LEFT JOIN sekolah_tujuan ON pengguna.id_pesertadidik = sekolah_tujuan.id_pesertadidik
+                                    LEFT JOIN jenis_pendaftaran ON sekolah_tujuan.jenis_pendaftaran = jenis_pendaftaran.id_jenis
+                                    WHERE sekolah_tujuan.jenis_pendaftaran='5' AND sekolah_tujuan.id_sekolah='$id' AND pengguna.status='1'");
+        return $result->num_rows();
+    }
+
+
     public function tampilformulirapprove($id)
     {
         $result = $this->db->query("SELECT * FROM pengguna

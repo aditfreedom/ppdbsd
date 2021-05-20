@@ -36,6 +36,7 @@ class Admin extends CI_Controller {
 		$data['afirmasi'] = $this->M_ppdb->tampilafirmasi($datauser);
 		$data['pindahan'] = $this->M_ppdb->tampilpindahan($datauser);
 		$data['prestasi'] = $this->M_ppdb->tampilprestasi($datauser);
+		$data['umum'] = $this->M_ppdb->tampilumum($datauser);
 		$data['formulirapprove'] = $this->M_ppdb->tampilformulirapprove($datauser);
 		$data['siswalulus'] = $this->M_ppdb->tampilsiswalulus($datauser);
 		$data['siswadaftarulang'] = $this->M_ppdb->tampilsiswadaftarulang($datauser);
