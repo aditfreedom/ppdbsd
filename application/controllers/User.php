@@ -463,9 +463,8 @@ class User extends CI_Controller
         $id_pesertadidik        = $this->session->userdata('id_pesertadidik');
         $status                 = $this->input->post('status');
         $dataPendaftaran        = $this->M_ppdb->getData('sekolah_tujuan', ['id_pesertadidik' => $id_pesertadidik])[0];
-        $this->M_ppdb->updatefinalisasi($status, $id_pesertadidik, 'pengguna');
 
-        if ($status == 1) {
+        if ($status == '1' && $dataPendaftaran['status']== '0') {
             switch ($dataPendaftaran['jenis_pendaftaran']) {
                 case '1':
                     $data = "sisa_zonasi=sisa_zonasi-1, total_in=total_in+1";
@@ -487,6 +486,7 @@ class User extends CI_Controller
             }
             $this->M_ppdb->kurangikuota($dataPendaftaran['id_sekolah'], $data);
         }
+        $this->M_ppdb->updatefinalisasi($status, $id_pesertadidik, 'pengguna');
         $this->load->view('berhasil_update_finalisasi');
     }
 
