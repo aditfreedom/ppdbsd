@@ -33,7 +33,7 @@
           <th scope="col">PINDAHAN ORANG TUA</th>
           <th scope="col">PRESTASI</th>
           <th scope="col">UMUM</th>
-          <th scope="col">AKSI</th>
+          <th hidden scope="col">AKSI</th>
         </tr>
       </thead>
       <tbody>
@@ -48,7 +48,7 @@
             <td><?php echo $data['sisa_pindahan']; ?></td>
             <td><?php echo $data['sisa_prestasi']; ?></td>
             <td><?php echo $data['sisa_umum']; ?></td>
-            <td>
+            <td hidden>
               <button class="btn btn-sm btn-primary edit" data-id="<?= $data['id_kuota']; ?>">
                 <i class="fa fa-edit"></i>
               </button>

@@ -104,47 +104,46 @@ class User extends CI_Controller
         $data['status2'] = $this->M_ppdb->tampil_data_uploadberkas_admin($id_pesertadidik)->num_rows();
         $this->load->view('template/header');
         $this->load->view('template/sidebaruser', $sess_data);
-        $this->load->view('finalisasi', $data);
+        $this->load->view('finalisasi',$data);
         $this->load->view('template/footer');
     }
 
-    public function tambahuser()
-    {
-        $nama_lengkap       = $this->input->post('nama_lengkap');
-        $sekolah_asal       = $this->input->post('sekolah_asal');
-        $jenis                = $this->input->post('jenis');
-        $foto               = $_FILES['foto'];
-        $username           = $this->input->post('username');
-        $password           = $this->input->post('password');
-        $status             = $this->input->post('status');
-
-
-
-        $config['upload_path']          = 'asset/foto/';
-        $config['allowed_types']        = 'gif|jpg|jpeg|png|JPG|JPEG';
-        $config['max_size']             = 0;
-        $config['max_width']            = 0;
-        $config['max_height']           = 0;
-
-        $this->load->library('upload', $config);
-        $this->upload->initialize($config);
-
-        if (!$this->upload->do_upload('foto')) {
-            $this->load->view('errorupload');
-        } else {
-            $foto = $this->upload->data('file_name');
-        }
-
-
-        $data = array(
-            'nama_lengkap' => $nama_lengkap,
-            'sekolah_asal' => $sekolah_asal,
-            'nisn' => "0",
-            'alamat' => "",
-            'no_hp' => "",
-            'bukti_tf' => "",
-            'jenis' => $jenis,
-            'foto' => $foto,
+      public function tambahuser(){
+		$nama_lengkap       = $this->input->post('nama_lengkap');
+		$sekolah_asal       = $this->input->post('sekolah_asal');
+		$jenis    		    = $this->input->post('jenis');
+		$foto       	    = $_FILES['foto'];
+		$username           = $this->input->post('username');
+		$password           = $this->input->post('password');
+		$status             = $this->input->post('status');
+	
+	
+	
+			$config['upload_path']          = 'asset/foto/';
+			$config['allowed_types']        = 'gif|jpg|jpeg|png|JPG|JPEG';
+			$config['max_size']             = 0;
+			$config['max_width']            = 0;
+			$config['max_height']           = 0;
+	
+			$this->load->library('upload', $config);
+			$this->upload->initialize($config);
+			 
+			if (! $this->upload->do_upload('foto')) {
+				$this->load->view('errorupload');
+			}else{
+				$foto=$this->upload->data('file_name');
+			}
+	
+		
+		$data = array(
+			'nama_lengkap' => $nama_lengkap,
+			'sekolah_asal' => $sekolah_asal,
+			'nisn' => "0",
+			'alamat' => "",
+			'no_hp' => "",
+			'bukti_tf' => "",
+			'jenis' => $jenis,
+			'foto' => $foto,
             'bukti_tf' => "",
             'tptlahir' => "",
             'tgllahir' => "",
@@ -152,27 +151,29 @@ class User extends CI_Controller
             'namaibu' => "",
             'no_wa' => "",
             'akte' => "",
-            'username' => $username,
-            'password' => $password,
-            'role' => "1",
-            'approve_formulir'     => "Antrian",
-            'approve_lulus'     => "Antrian",
-            'approve_daftarulang' => "Antrian",
+			'username' => $username,
+			'password' => $password,
+			'role' => "1",
+			'approve_formulir' 	=> "Antrian",
+			'approve_lulus' 	=> "Antrian",
+			'approve_daftarulang' => "Antrian",
 
 
 
-        );
+		);
 
-        $hitungusername = $this->M_ppdb->tampildatapengguna1($username);
+		$hitungusername= $this->M_ppdb->tampildatapengguna1($username);
 
-        if ($hitungusername >= 1) {
-            $this->load->view('username_gagal');
-        } else {
-            $this->M_ppdb->tambahuser($data, 'pengguna');
-            $this->load->view('status');
-            // redirect(base_url('home/registrasi'));
-        }
-    }
+		if ($hitungusername >=1) {
+			$this->load->view('username_gagal');    
+		}else{
+			$this->M_ppdb->tambahuser($data,'pengguna');
+			$this->load->view('status');    
+			// redirect(base_url('home/registrasi'));
+		}
+		
+
+	}
 
     public function updateformulir()
     {
@@ -244,10 +245,9 @@ class User extends CI_Controller
         $this->load->view('berhasil_update_formulir');
     }
 
-    public function updateberkas()
-    {
+    public function updateberkas(){
         $id_pesertadidik         = $this->session->userdata('id_pesertadidik');
-        $jenis_pendaftaran       = $this->input->post('jenis_pendaftaran');
+		$jenis_pendaftaran       = $this->input->post('jenis_pendaftaran');
         $up_zonasi1              = $_FILES['up_zonasi1']['name'];
         $up_zonasi1_lama         = $this->input->post('up_zonasi1_lama');
         $up_zonasi2              = $_FILES['up_zonasi2']['name'];
@@ -265,120 +265,120 @@ class User extends CI_Controller
         $up_prestasi2            = $this->input->post('up_prestasi2');
         $up_prestasi2_lama         = $this->input->post('up_prestasi2_lama');
 
-
+	
         $config['upload_path']          = 'asset/file/';
         $config['allowed_types']        = 'pdf|PDF';
         $config['max_size']             = 0;
         $config['max_width']            = 0;
         $config['max_height']           = 0;
-
+    
         $this->load->library('upload', $config);
         $this->upload->initialize($config);
-
+         
         //zonasi1
-        if (!$this->upload->do_upload('up_zonasi1')) {
+        if (! $this->upload->do_upload('up_zonasi1')) {
             // $error = array('error' => $this->upload->display_errors());
             $this->load->view('error_upload_berkas2');
-        } else {
-            $up_zonasi1 = $this->upload->data('file_name');
+        }else{
+            $up_zonasi1=$this->upload->data('file_name');
         }
-
+    
         if ($up_zonasi1 == null) {
             $up_zonasi1 = $up_zonasi1_lama;
-        }
+        }	
 
         //zonasi2
-        if (!$this->upload->do_upload('up_zonasi2')) {
+        if (! $this->upload->do_upload('up_zonasi2')) {
             // $error = array('error' => $this->upload->display_errors());
             $this->load->view('error_upload_berkas2');
-        } else {
-            $up_zonasi2 = $this->upload->data('file_name');
+        }else{
+            $up_zonasi2=$this->upload->data('file_name');
         }
-
+    
         if ($up_zonasi2 == null) {
             $up_zonasi2 = $up_zonasi2_lama;
-        }
+        }	
 
 
 
         //afirmasi1
-        if (!$this->upload->do_upload('up_afirmasi1')) {
+        if (! $this->upload->do_upload('up_afirmasi1')) {
             // $error = array('error' => $this->upload->display_errors());
             $this->load->view('error_upload_berkas2');
-        } else {
-            $up_afirmasi1 = $this->upload->data('file_name');
+        }else{
+            $up_afirmasi1=$this->upload->data('file_name');
         }
-
+    
         if ($up_afirmasi1 == null) {
             $up_afirmasi1 = $up_afirmasi1_lama;
-        }
+        }	
 
 
         //afirmasi2
-        if (!$this->upload->do_upload('up_afirmasi2')) {
+        if (! $this->upload->do_upload('up_afirmasi2')) {
             // $error = array('error' => $this->upload->display_errors());
             $this->load->view('error_upload_berkas2');
-        } else {
-            $up_afirmasi2 = $this->upload->data('file_name');
+        }else{
+            $up_afirmasi2=$this->upload->data('file_name');
         }
-
+    
         if ($up_afirmasi2 == null) {
             $up_afirmasi2 = $up_afirmasi2_lama;
-        }
+        }	
 
         //pindahan1
-        if (!$this->upload->do_upload('up_pindahan1')) {
+        if (! $this->upload->do_upload('up_pindahan1')) {
             // $error = array('error' => $this->upload->display_errors());
             $this->load->view('error_upload_berkas2');
-        } else {
-            $up_pindahan1 = $this->upload->data('file_name');
+        }else{
+            $up_pindahan1=$this->upload->data('file_name');
         }
-
+    
         if ($up_pindahan1 == null) {
             $up_pindahan1 = $up_pindahan1_lama;
-        }
+        }	
 
 
         //pindahan2
-        if (!$this->upload->do_upload('up_pindahan2')) {
+        if (! $this->upload->do_upload('up_pindahan2')) {
             // $error = array('error' => $this->upload->display_errors());
             $this->load->view('error_upload_berkas2');
-        } else {
-            $up_pindahan2 = $this->upload->data('file_name');
+        }else{
+            $up_pindahan2=$this->upload->data('file_name');
         }
-
+    
         if ($up_pindahan2 == null) {
             $up_pindahan2 = $up_pindahan2_lama;
-        }
+        }	
 
 
         //prestasi1
-        if (!$this->upload->do_upload('up_prestasi1')) {
+        if (! $this->upload->do_upload('up_prestasi1')) {
             // $error = array('error' => $this->upload->display_errors());
             $this->load->view('error_upload_berkas2');
-        } else {
-            $up_prestasi1 = $this->upload->data('file_name');
+        }else{
+            $up_prestasi1=$this->upload->data('file_name');
         }
-
+    
         if ($up_prestasi1 == null) {
             $up_prestasi1 = $up_prestasi1_lama;
-        }
+        }	
 
         //prestasi2
-        if (!$this->upload->do_upload('up_prestasi2')) {
+        if (! $this->upload->do_upload('up_prestasi2')) {
             // $error = array('error' => $this->upload->display_errors());
             $this->load->view('error_upload_berkas2');
-        } else {
-            $up_prestasi2 = $this->upload->data('file_name');
+        }else{
+            $up_prestasi2=$this->upload->data('file_name');
         }
-
+    
         if ($up_prestasi2 == null) {
             $up_prestasi2 = $up_prestasi2_lama;
-        }
-
-
-        $data = array(
-            'up_zonasi1' => $up_zonasi1,
+        }	
+        
+		
+		$data = array(
+			'up_zonasi1' => $up_zonasi1,
             'up_zonasi2' => $up_zonasi2,
             'up_afirmasi1' => $up_afirmasi1,
             'up_afirmasi2' => $up_afirmasi2,
@@ -386,11 +386,11 @@ class User extends CI_Controller
             'up_pindahan2' => $up_pindahan2,
             'up_prestasi1' => $up_prestasi1,
             'up_prestasi2' => $up_prestasi2
-        );
+		);
 
         $data2 = array(
-            'id_pesertadidik' => $id_pesertadidik,
-            'up_zonasi1' => $up_zonasi1,
+			'id_pesertadidik' => $id_pesertadidik,
+			'up_zonasi1' => $up_zonasi1,
             'up_zonasi2' => $up_zonasi2,
             'up_afirmasi1' => $up_afirmasi1,
             'up_afirmasi2' => $up_afirmasi2,
@@ -398,22 +398,23 @@ class User extends CI_Controller
             'up_pindahan2' => $up_pindahan2,
             'up_prestasi1' => $up_prestasi1,
             'up_prestasi2' => $up_prestasi2
-        );
+		);
 
         $where = array(
             'id_pesertadidik' => $id_pesertadidik
         );
 
-        $hitungdata = $this->M_ppdb->tampil_data_berkas($id_pesertadidik);
+        $hitungdata= $this->M_ppdb->tampil_data_berkas($id_pesertadidik);
 
-        if ($hitungdata == 1) {
+		if ($hitungdata ==1) {
             $this->M_ppdb->updateberkas($where, $data, 'upload_berkas');
             $this->load->view('berhasil_update_berkas');
-        } else {
+		}else{
             $this->M_ppdb->tambahberkas($data2);
             $this->load->view('berhasil_update_berkas');
-        }
-    }
+		}
+
+	}
 
     public function updatesekolahtujuan()
     {
@@ -434,7 +435,7 @@ class User extends CI_Controller
             'id_sekolah' => $id_sekolah
         );
 
-
+        
         $data2 = array(
             'id_pesertadidik' => $id_pesertadidik,
             'jenis_pendaftaran' => $jenis_pendaftaran,
@@ -447,50 +448,51 @@ class User extends CI_Controller
             'id_pesertadidik' => $id_pesertadidik
         );
 
-        $hitungdata = $this->M_ppdb->tampil_data_sekolahtujuan($id_pesertadidik);
+        $hitungdata= $this->M_ppdb->tampil_data_sekolahtujuan($id_pesertadidik);
 
-        if ($hitungdata == 1) {
+		if ($hitungdata ==1) {
             $this->M_ppdb->updatesekolahtujuan($where, $data, 'sekolah_tujuan');
             $this->load->view('berhasil_update_sekolahtujuan');
-        } else {
+		}else{
             $insert = $this->M_ppdb->tambahsekolahtujuan($data2);
             $this->load->view('berhasil_update_sekolahtujuan');
-        }
+  
+		}
+
     }
 
     public function updatefinalisasi()
     {
         $id_pesertadidik        = $this->session->userdata('id_pesertadidik');
         $status                 = $this->input->post('status');
-        $dataPendaftaran        = $this->M_ppdb->getData('sekolah_tujuan', ['id_pesertadidik' => $id_pesertadidik])[0];
+        $dataPendaftaran        = $this->M_ppdb->getData('sekolah_tujuan', ['id_pesertadidik'=>$id_pesertadidik])[0];
 
-        if ($status == '1' && $dataPendaftaran['status']== '0') {
-            switch ($dataPendaftaran['jenis_pendaftaran']) {
-                case '1':
-                    $data = "sisa_zonasi=sisa_zonasi-1, total_in=total_in+1";
-                    break;
-                case '2':
-                    $data = "sisa_afirmasi=sisa_afirmasi-1, total_in=total_in+1";
-                    break;
-                case '3':
-                    $data = "sisa_pindahan=sisa_pindahan-1, total_in=total_in+1";
-                    break;
-                case '4':
-                    $data = "sisa_prestasi=sisa_prestasi-1, total_in=total_in+1";
-                    break;
-                case '5':
-                    $data = "sisa_umum=sisa_umum-1, total_in=total_in+1";
-                    break;
-                default:
-                    break;
-            }
-            $this->M_ppdb->kurangikuota($dataPendaftaran['id_sekolah'], $data);
+        switch ($dataPendaftaran['jenis_pendaftaran']) {
+            case '1':
+                $data = "sisa_zonasi=sisa_zonasi-1, total_in=total_in+1";
+                break;
+            case '2':
+                $data = "sisa_afirmasi=sisa_afirmasi-1, total_in=total_in+1";
+                break;
+            case '3':
+                $data = "sisa_pindahan=sisa_pindahan-1, total_in=total_in+1";
+                break;
+            case '4':
+                $data = "sisa_prestasi=sisa_prestasi-1, total_in=total_in+1";
+                break;
+            case '5':
+                $data = "sisa_umum=sisa_umum-1, total_in=total_in+1";
+                break;
+            default:
+                break;
         }
-        $this->M_ppdb->updatefinalisasi($status, $id_pesertadidik, 'pengguna');
+        $this->M_ppdb->kurangikuota($dataPendaftaran['id_sekolah'], $data);
+
+		$this->M_ppdb->updatefinalisasi($status,$id_pesertadidik,'pengguna');
         $this->load->view('berhasil_update_finalisasi');
-    }
+		}
 
-
+    
 
 
     public function kirimfoto()
@@ -906,111 +908,115 @@ class User extends CI_Controller
     }
 
     public function getDesaByWilayah()
-    {
-        $post = $this->input->post(NULL, TRUE);
-        $where['kode_wilayah'] = $post['kode_wilayah'];
-        $desa = $this->M_ppdb->getData('data_desa', $where);
+	{
+		$post = $this->input->post(NULL, TRUE);
+		$where['kode_wilayah'] = $post['kode_wilayah'];
+		$desa = $this->M_ppdb->getData('data_desa', $where);
 
-        if (count($desa)) {
-            $result = array(
-                'status' => 'success',
-                'data' => $desa
-            );
-        } else {
-            $result = array(
-                'status' => 'failed',
-                'msg' => 'Data Tidak Ditemukan'
-            );
-        }
+		if (count($desa)) {
+			$result = array(
+				'status' => 'success',
+				'data' => $desa
+			);
+		}
+		else {
+			$result = array(
+				'status' => 'failed',
+				'msg' => 'Data Tidak Ditemukan'
+			);
+		}
 
-        echo json_encode($result);
-    }
+		echo json_encode($result);
+	}
 
     public function getSekolahByDesa()
-    {
-        $post = $this->input->post(NULL, TRUE);
-        $where['z.id_desa'] = $post['id_desa'];
-        $sekolah = $this->M_ppdb->getZonasi($where);
+	{
+		$post = $this->input->post(NULL, TRUE);
+		$where['z.id_desa'] = $post['id_desa'];
+		$sekolah = $this->M_ppdb->getZonasi($where);
 
-        if (count($sekolah)) {
-            $result = array(
-                'status' => 'success',
-                'data' => $sekolah
-            );
-        } else {
-            $result = array(
-                'status' => 'failed',
-                'msg' => 'Data Tidak Ditemukan'
-            );
-        }
+		if (count($sekolah)) {
+			$result = array(
+				'status' => 'success',
+				'data' => $sekolah
+			);
+		}
+		else {
+			$result = array(
+				'status' => 'failed',
+				'msg' => 'Data Tidak Ditemukan'
+			);
+		}
 
-        echo json_encode($result);
-    }
+		echo json_encode($result);
+	}
 
     public function getAllSekolah()
-    {
-        $where['status_sekolah'] = 1; // ambil sekolah negeri
-        $sekolah = $this->M_ppdb->getData('data_smp', $where);
+	{
+		$where['status_sekolah'] = 1; // ambil sekolah negeri
+		$sekolah = $this->M_ppdb->getData('data_smp', $where);
 
-        if (count($sekolah)) {
-            $result = array(
-                'status' => 'success',
-                'data' => $sekolah
-            );
-        } else {
-            $result = array(
-                'status' => 'failed',
-                'msg' => 'Data Tidak Ditemukan'
-            );
-        }
+		if (count($sekolah)) {
+			$result = array(
+				'status' => 'success',
+				'data' => $sekolah
+			);
+		}
+		else {
+			$result = array(
+				'status' => 'failed',
+				'msg' => 'Data Tidak Ditemukan'
+			);
+		}
 
-        echo json_encode($result);
-    }
+		echo json_encode($result);
+	}
 
     public function getSekolahSwasta()
-    {
-        $where['status_sekolah'] = 2; // ambil sekolah negeri
-        $sekolah = $this->M_ppdb->getData('data_smp', $where);
+	{
+		$where['status_sekolah'] = 2; // ambil sekolah negeri
+		$sekolah = $this->M_ppdb->getData('data_smp', $where);
 
-        if (count($sekolah)) {
-            $result = array(
-                'status' => 'success',
-                'data' => $sekolah
-            );
-        } else {
-            $result = array(
-                'status' => 'failed',
-                'msg' => 'Data Tidak Ditemukan'
-            );
-        }
+		if (count($sekolah)) {
+			$result = array(
+				'status' => 'success',
+				'data' => $sekolah
+			);
+		}
+		else {
+			$result = array(
+				'status' => 'failed',
+				'msg' => 'Data Tidak Ditemukan'
+			);
+		}
 
-        echo json_encode($result);
-    }
+		echo json_encode($result);
+	}
 
     public function getKuotaZonasi()
-    {
-        $post = $this->input->post(NULL, TRUE);
-        $where['id_sekolah'] = $post['id_sekolah'];
-        $desa = $this->M_ppdb->getData('kuota_siswa', $where);
+	{
+		$post = $this->input->post(NULL, TRUE);
+		$where['id_sekolah'] = $post['id_sekolah'];
+		$desa = $this->M_ppdb->getData('kuota_siswa', $where);
 
 
-        if (count($desa)) {
-            $result = array(
-                'status' => 'success',
-                'data' => $desa
-            );
-        } else {
-            $result = array(
-                'status' => 'failed',
-                'msg' => 'Data Tidak Ditemukan'
-            );
-        }
+		if (count($desa)) {
+			$result = array(
+				'status' => 'success',
+				'data' => $desa
+			);
+		}
+		else {
+			$result = array(
+				'status' => 'failed',
+				'msg' => 'Data Tidak Ditemukan'
+			);
+		}
 
-        echo json_encode($result);
-    }
+		echo json_encode($result);
+	}
 
-    function cetak_formulir()
-    {
+    function cetak_formulir(){
         $sess_data = $this->session->userdata();
         $where['id_pesertadidik'] = $sess_data['id_pesertadidik'];
         $where2 = $this->session->userdata('id_pesertadidik');
@@ -1021,13 +1027,14 @@ class User extends CI_Controller
         $data['siswa2'] = $this->M_ppdb->getDataSiswa2($where2)->result();
 
 
-        foreach ($data['siswa2'] as $data1) {
-            $data6 = $data1->id_sekolah;
+        foreach ($data['siswa2'] as $data1){
+            $data6=$data1->id_sekolah;
         }
 
 
-        $data['siswa3'] = $this->M_ppdb->nomor_formulir($data6, $where2)->num_rows();
+        $data['siswa3'] = $this->M_ppdb->nomor_formulir($data6,$where2)->num_rows();
         $this->load->view('cetak_formulir', $data);
+
     }
 
     public function logout()
@@ -1035,4 +1042,5 @@ class User extends CI_Controller
         $this->session->sess_destroy();
         redirect(base_url('hal/login'));
     }
+
 }

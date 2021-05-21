@@ -1,5 +1,18 @@
 <!DOCTYPE html>
 <html>
+    
+         <!-- Global Site Tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-NTWBHPSWRT"></script>
+
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-NTWBHPSWRT');
+</script>
+
+    
+    
 <head>
 <link href="<?=base_url()?>assets/img/favicon.png" rel="icon">
   <meta charset="utf-8">
