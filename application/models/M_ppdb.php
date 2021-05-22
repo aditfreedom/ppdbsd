@@ -579,9 +579,8 @@ class M_ppdb extends CI_Model
                                     WHERE sekolah_tujuan.jenis_pendaftaran='4' AND sekolah_tujuan.id_sekolah='$id' AND pengguna.status='1'");
         return $result->num_rows();
     }
-
-
-    public function tampilumum($id)
+    
+     public function tampilumum($id)
     {
         $result = $this->db->query("SELECT * FROM pengguna
                                     LEFT JOIN sekolah_tujuan ON pengguna.id_pesertadidik = sekolah_tujuan.id_pesertadidik
@@ -589,7 +588,6 @@ class M_ppdb extends CI_Model
                                     WHERE sekolah_tujuan.jenis_pendaftaran='5' AND sekolah_tujuan.id_sekolah='$id' AND pengguna.status='1'");
         return $result->num_rows();
     }
-
 
     public function tampilformulirapprove($id)
     {
@@ -759,7 +757,7 @@ class M_ppdb extends CI_Model
 
     public function updatefinalisasi($status, $id_pesertadidik)
     {
-        $this->db->query("UPDATE pengguna SET approve_formulir='Antrian',approve_lulus='Antrian',approve_daftarulang='Antrian',status='$status' WHERE id_pesertadidik = '$id_pesertadidik'");
+        return $this->db->query("UPDATE pengguna SET approve_formulir='Antrian',approve_lulus='Antrian',approve_daftarulang='Antrian',status='$status' WHERE id_pesertadidik = '$id_pesertadidik'");
     }
 
     public function updatelulus($approve_lulus, $id)

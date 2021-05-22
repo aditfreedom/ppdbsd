@@ -78,6 +78,7 @@ class User extends CI_Controller
         $sess_data = $this->session->userdata();
         $id_pesertadidik = $this->session->userdata('id_pesertadidik');
         $data['status'] = $this->M_ppdb->tampilpengguna($id_pesertadidik)->result();
+        $data['approval2'] = $this->M_ppdb->tampilketerangan($id_pesertadidik)->result();
         $this->load->view('template/header');
         $this->load->view('template/sidebaruser', $sess_data);
         $this->load->view('pengumumankelulusan', $data);
@@ -102,6 +103,7 @@ class User extends CI_Controller
         $id_pesertadidik = $this->session->userdata('id_pesertadidik');
         $data['finalisasi'] = $this->M_ppdb->tampil_data_finalisasi($id_pesertadidik)->result();
         $data['status2'] = $this->M_ppdb->tampil_data_uploadberkas_admin($id_pesertadidik)->num_rows();
+        $data['js'] = 'finalisasi';
         $this->load->view('template/header');
         $this->load->view('template/sidebaruser', $sess_data);
         $this->load->view('finalisasi',$data);
@@ -465,32 +467,58 @@ class User extends CI_Controller
     {
         $id_pesertadidik        = $this->session->userdata('id_pesertadidik');
         $status                 = $this->input->post('status');
-        $dataPendaftaran        = $this->M_ppdb->getData('sekolah_tujuan', ['id_pesertadidik'=>$id_pesertadidik])[0];
+        $dataPendaftaran        = $this->M_ppdb->getData('sekolah_tujuan', ['id_pesertadidik' => $id_pesertadidik])[0];
+        $dataPengguna           = $this->M_ppdb->getData('pengguna', ['id_pesertadidik' => $id_pesertadidik])[0];
+        $dataKuota              = $this->M_ppdb->getData('kuota_siswa', ['id_sekolah' => $dataPendaftaran['id_sekolah']])[0];
+        $sisa_kuota           = 0;
 
-        switch ($dataPendaftaran['jenis_pendaftaran']) {
-            case '1':
-                $data = "sisa_zonasi=sisa_zonasi-1, total_in=total_in+1";
-                break;
-            case '2':
-                $data = "sisa_afirmasi=sisa_afirmasi-1, total_in=total_in+1";
-                break;
-            case '3':
-                $data = "sisa_pindahan=sisa_pindahan-1, total_in=total_in+1";
-                break;
-            case '4':
-                $data = "sisa_prestasi=sisa_prestasi-1, total_in=total_in+1";
-                break;
-            case '5':
-                $data = "sisa_umum=sisa_umum-1, total_in=total_in+1";
-                break;
-            default:
-                break;
+        if ($status == '1' && $dataPengguna['status']== '0') {
+            switch ($dataPendaftaran['jenis_pendaftaran']) {
+                case '1':
+                    $sisa_kuota = $dataKuota['sisa_zonasi'];
+                    $data = "sisa_zonasi=sisa_zonasi-1, total_in=total_in+1";
+                    break;
+                case '2':
+                    $sisa_kuota = $dataKuota['sisa_afirmasi'];
+                    $data = "sisa_afirmasi=sisa_afirmasi-1, total_in=total_in+1";
+                    break;
+                case '3':
+                    $sisa_kuota = $dataKuota['sisa_pindahan'];
+                    $data = "sisa_pindahan=sisa_pindahan-1, total_in=total_in+1";
+                    break;
+                case '4':
+                    $sisa_kuota = $dataKuota['sisa_prestasi'];
+                    $data = "sisa_prestasi=sisa_prestasi-1, total_in=total_in+1";
+                    break;
+                case '5':
+                    $sisa_kuota = $dataKuota['sisa_umum'];
+                    $data = "sisa_umum=sisa_umum-1, total_in=total_in+1";
+                    break;
+                default:
+                    break;
+            }
+
+            if ($sisa_kuota < 1) {
+                $response = array(
+                    'status' => 'failed',
+                    'message' => 'Kuota Sudah Habis'
+                );
+                echo json_encode($response);
+                return null;
+            }
+            
+            $this->M_ppdb->kurangikuota($dataPendaftaran['id_sekolah'], $data);
         }
-        $this->M_ppdb->kurangikuota($dataPendaftaran['id_sekolah'], $data);
-
-		$this->M_ppdb->updatefinalisasi($status,$id_pesertadidik,'pengguna');
-        $this->load->view('berhasil_update_finalisasi');
-		}
+        $update = $this->M_ppdb->updatefinalisasi($status, $id_pesertadidik, 'pengguna');
+        
+        if ($update) {
+            $response = array(
+                'status' => 'success',
+                'message' => 'Berhasil Melakukan Finalisasi'
+            );
+        }
+        echo json_encode($response);
+    }
 
     
 
