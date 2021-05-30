@@ -126,7 +126,7 @@
             <tr>
                 <td>Asal Sekolah (SD)</td>
                 <td>:</td>
-                <td><?=$siswa['sekolah_asal'];?></td>
+                <td style="text-transform: uppercase;"><?=$siswa['sekolah_asal'];?></td>
             </tr>
             <tr>
                 <td>Nomor Induk Siswa Nasional (NISN)</td>
@@ -136,12 +136,12 @@
             <tr>
                 <td>Nama Pesera Didik</td>
                 <td>:</td>
-                <td><?=$siswa['nama_siswa'];?></td>
+                <td style="text-transform: uppercase;"><?=$siswa['nama_siswa'];?></td>
             </tr>
             <tr>
                 <td>Tempat Lahir</td>
                 <td>:</td>
-                <td><?=$siswa['tempat_lahir'];?></td>
+                <td style="text-transform: uppercase;"><?=$siswa['tempat_lahir'];?></td>
             </tr>
             <tr>
                 <td>Tanggal Lahir</td>
@@ -151,7 +151,7 @@
             <tr>
                 <td>Jenis Kelamin</td>
                 <td>:</td>
-                <td><?=$siswa['jk'];?></td>
+                <td style="text-transform: uppercase;"><?=$siswa['jk'];?></td>
             </tr>
             <tr>
                 <td>Nomor Induk Kependudukan (NIK)</td>
@@ -161,7 +161,7 @@
             <tr>
                 <td>Alamat (Nama Desa/Kelurahan)</td>
                 <td>:</td>
-                <td><?=$siswa['alamat_jalan'];?>, <?=$siswa['desa_kelurahan'];?></td>
+                <td style="text-transform: uppercase;"><?=$siswa['alamat_jalan'];?>, <?=$siswa['desa_kelurahan'];?></td>
             </tr>
             <tr>
                 <td>Nomor Program Indonesia Pintar (PIP)</td>
@@ -186,22 +186,22 @@
             <tr>
                 <td  style="width: 48%;">Nama Ayah Kandung</td>
                 <td style="width: 10px;">:</td>
-                <td style="width: 50%;"><?=$siswa['nama_ayah'];?></td>
+                <td style="width: 50%;text-transform: uppercase;><?=$siswa['nama_ayah'];?></td>
             </tr>
             <tr>
                 <td>Pekerjaan Ayah</td>
                 <td>:</td>
-                <td><?=$siswa['pekerjaan_ayah'];?></td>
+                <td style="text-transform: uppercase;"><?=$siswa['pekerjaan_ayah'];?></td>
             </tr>
             <tr>
                 <td>Nama Ibu Kandung</td>
                 <td>:</td>
-                <td><?=$siswa['nama_ibu_kandung'];?></td>
+                <td style="text-transform: uppercase;"><?=$siswa['nama_ibu_kandung'];?></td>
             </tr>
             <tr>
                 <td>Pekerjaan Ibu</td>
                 <td>:</td>
-                <td><?=$siswa['pekerjaan_ibu_kandung'];?></td>
+                <td style="text-transform: uppercase;"><?=$siswa['pekerjaan_ibu_kandung'];?></td>
             </tr>
             <tr>
                 <td>Nama Wali Siswa</td>
@@ -222,22 +222,22 @@
             <tr>
                 <td style="width: 48%;">Jalur Pendaftaran</td>
                 <td style="width: 10px;">:</td>
-                <td style="width: 50%;"><?=$data->nama;?></td>
+                <td style="width: 50%;text-transform: uppercase;"><?=$data->nama;?></td>
             </tr>
             <tr>
                 <td>Kecamatan</td>
                 <td>:</td>
-                <td><?=$data->nama_wilayah;?></td>
+                <td style="text-transform: uppercase;" ><?=$data->nama_wilayah;?></td>
             </tr>
             <tr>
                 <td>Nama Desa/Kelurahan</td>
                 <td>:</td>
-                <td><?=$data->nama_desa;?></td>
+                <td style="text-transform: uppercase;" ><?=$data->nama_desa;?></td>
             </tr>
             <tr>
                 <td>Sekolah Tujuan</td>
                 <td>:</td>
-                <td><?=$data->nama_sekolah;?></td>
+                <td style="text-transform: uppercase;" ><?=$data->nama_sekolah;?></td>
             </tr>
             <?php endforeach; ?>
         </tbody>

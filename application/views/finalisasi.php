@@ -20,9 +20,11 @@
       if ($data->status == "1") {
         $checked = "checked";
         $disabled = "disabled";
+        $buttonclick = "";
       } else {
         $checked = "";
         $disabled = "";
+        $buttonclick = "disabled";
       }
       ?>
     <?php endforeach ?>
@@ -50,21 +52,7 @@
     <form data-url="<?= base_url('user/updatefinalisasi') ?>" method="post" id="form-finalisasi" >
       <div <?= $hidden ?> class="container">
         <div class="form-group">
-          <div class="container shadow p-3 mb-3 bg-white rounded">
-            <h5 class="text-uppercase"><b>Harap Membawa Berkas Ke Sekolah Tujuan : </b></h5>
-              <ol>
-              <li>Fotocopy Berkas Yang Telah Di Upload Pada Menu <b>Upload Berkas</b></li>
-              <li>Print Out Formulir Pendaftaran <a href="<?=base_url('user/cetak_formulir');?>" class="btn btn-success rounded-pill">Download Disini</a></li>
-              <li>Berkas Di Satukan Ke Dalam Map :</li>
-              <b><a href="#" class="btn btn-primary text-decoration-none rounded-pill"><b>Zonasi :  Map Biru</b></a> 
-                  <a href="#" class="btn btn-warning text-dark text-decoration-none rounded-pill"><b>Afirmasi :  Map Kuning</b></a> 
-                  <a href="#" class="btn btn-danger text-decoration-none rounded-pill"><b>Perpindahan Tugas Orang Tua :  Map Merah</b></a> </b>
-                  <a href="#" class="btn btn-success text-decoration-none rounded-pill"><b>Prestasi :  Map Hijau</b></a> </b>
-
-              </ol>
-          </div>
-
-          <div class="container shadow p-3 mb-3 bg-white rounded">
+             <div class="container shadow p-3 mb-3 bg-white rounded">
             <h3><b>PROSES FINALISASI</b></h3>
             <ol>
             <li>Pada tahap ini anda hanya perlu mengklik centang pada checkbox dibawah</li>
@@ -74,6 +62,23 @@
             <br>
             <input type="checkbox" id="status" name="status" value="1" required <?= $checked ?>> <label for="status" class="font-weight-normal"> <b>Dengan ini saya menyatakan bahwa semua informasi yang dimasukkan adalah benar.</b></p></label>
           </div>
+            
+            
+          <div class="container shadow p-3 mb-3 bg-white rounded">
+            <h5 class="text-uppercase"><b>Harap Membawa Berkas Ke Sekolah Tujuan : </b></h5>
+              <ol>
+              <li>Fotocopy Berkas Yang Telah Di Upload Pada Menu <b>Upload Berkas</b></li>
+              <li>Print Out Formulir Pendaftaran <a href="<?=base_url('user/cetak_formulir');?>" class="btn btn-success rounded-pill <?=$buttonclick;?>">Download Disini</a></li>
+              <li>Berkas Di Satukan Ke Dalam Map :</li>
+              <b><a href="#" class="btn btn-primary text-decoration-none rounded-pill"><b>Zonasi :  Map Biru</b></a> 
+                  <a href="#" class="btn btn-warning text-dark text-decoration-none rounded-pill"><b>Afirmasi :  Map Kuning</b></a> 
+                  <a href="#" class="btn btn-danger text-decoration-none rounded-pill"><b>Perpindahan Tugas Orang Tua :  Map Merah</b></a> </b>
+                  <a href="#" class="btn btn-success text-decoration-none rounded-pill"><b>Prestasi :  Map Hijau</b></a> </b>
+
+              </ol>
+          </div>
+
+        
         </div>
       </div>
       <button <?= $hidden; ?> <?= $disabled; ?>  type="submit" id="btn" class="btn btn-primary font-weight-bold" style="width:100%;">FINALISASI PENDAFTARAN</button><br><br>

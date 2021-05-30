@@ -44,7 +44,7 @@
           <?php $i = 1; 
           foreach ($kecamatan as $data) :
 	        ?>
-		      <tr class="nomor text-left">
+		      <tr class="nomor text-left text-uppercase">
             <td><?=$data->dsid;?></td>
             <td><?=$data->dsdnpsn;?></td>
             <td><?=$data->dsdnm;?></td>

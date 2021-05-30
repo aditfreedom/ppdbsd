@@ -20,6 +20,7 @@
     <div class="container">
     <a href="#" class="btn rounded-pill text-left text-light"  style="width:100%;background:#325288;"><b>DATA DIRI</b></a><br><br>
     <form action="<?=base_url('user/updateformulir')?>" method="post">
+        
     <?php foreach ($isi_formulir as $data) : ?>
       <?php
       if ($data->status == 1) {
@@ -35,7 +36,7 @@
     <div class="container">
         <div class="form-group">
         <label for=""><b>NAMA CALON PESERTA DIDIK (SESUAI KARTU NISN) : </b></label>
-        <input readonly <?=$disabled;?> type="text" name="nama_siswa" value="<?php echo $data->nama_siswa;?>" class="form-control" maxlength="50" placeholder="Nama Lengkap">
+        <input readonly <?=$disabled;?> type="text" name="nama_siswa" value="<?php echo $data->nama_siswa;?>" class="form-control text-uppercase" maxlength="50" placeholder="Nama Lengkap">
         </div>  
         <?php endforeach ;?>
 
@@ -57,7 +58,7 @@
         <?php foreach ($isi_formulir as $data) : ?>
         <div class="form-group">
         <label for=""><b>TEMPAT LAHIR :</b></label>
-        <input readonly <?=$disabled;?> type="text" name="tempat_lahir" value="<?php echo $data->tempat_lahir;?>" class="form-control" placeholder="Tempat Lahir" maxlength="50">
+        <input readonly <?=$disabled;?> type="text" name="tempat_lahir" value="<?php echo $data->tempat_lahir;?>" class="text-uppercase form-control" placeholder="Tempat Lahir" maxlength="50">
         </div>  
         <?php endforeach ;?>
 
@@ -66,9 +67,9 @@
         <label for=""><b>JENIS KELAMIN :</b></label>
         <?php foreach ($isi_formulir as $data) : ?>
             <?php if($data->jk =="L"){
-                  $jk="Laki-Laki";
+                  $jk="LAKI-LAKI";
                 }else {
-                  $jk="Perempuan";
+                  $jk="PEREMPUAN";
                 }?>
         <input hidden readonly <?=$disabled;?> type="text" name="jk" value="<?php echo $data->jk;?>" class="form-control" placeholder="Jenis Kelamin" maxlength="50">
         <input readonly <?=$disabled;?> type="text" value="<?php echo $jk;?>" class="form-control" placeholder="Tempat Lahir" maxlength="50">
@@ -111,17 +112,17 @@
     <div class="container">
         <div class="form-group">
         <label for=""><b>ALAMAT JALAN : </b></label>
-        <input readonly <?=$disabled;?> type="text" name="alamat_jalan" value="<?php echo $data->alamat_jalan;?>" class="form-control" placeholder="Nama Jalan" maxlength="190">
+        <input readonly <?=$disabled;?> type="text" name="alamat_jalan" value="<?php echo $data->alamat_jalan;?>" class="text-uppercase form-control" placeholder="Nama Jalan" maxlength="190">
         </div>  
 
         <div class="form-group">
         <label for=""><b>DESA KELURAHAN :</b></label>
-        <input readonly <?=$disabled;?> type="text" name="desa_kelurahan" value="<?php echo $data->desa_kelurahan;?>" class="form-control" placeholder="Nama Desa" maxlength="200">
+        <input readonly <?=$disabled;?> type="text" name="desa_kelurahan" value="<?php echo $data->desa_kelurahan;?>" class="text-uppercase form-control" placeholder="Nama Desa" maxlength="200">
         </div>  
 
         <div class="form-group">
         <label for=""><b>DUSUN :</b></label>
-        <input readonly <?=$disabled;?> type="text" name="nama_dusun" value="<?php echo $data->nama_dusun;?>" class="form-control" placeholder="Nama Dusun" maxlength="200">
+        <input readonly <?=$disabled;?> type="text" name="nama_dusun" value="<?php echo $data->nama_dusun;?>" class="text-uppercase form-control" placeholder="Nama Dusun" maxlength="200">
         </div>  
         </div>    
         </div>
@@ -153,12 +154,12 @@
     <div class="container">
         <div class="form-group">
         <label for=""><b>NAMA IBU KANDUNG : </b></label>
-        <input readonly <?=$disabled;?> type="text" name="nama_ibu_kandung" value="<?php echo $data->nama_ibu_kandung;?>" class="form-control" placeholder="Nama Ibu Kandung" maxlength="190">
+        <input readonly <?=$disabled;?> type="text" name="nama_ibu_kandung" value="<?php echo $data->nama_ibu_kandung;?>" class="text-uppercase form-control" placeholder="Nama Ibu Kandung" maxlength="190">
         </div>  
 
         <div class="form-group">
         <label for=""><b>PEKERJAAN IBU KANDUNG :</b></label>
-        <input readonly <?=$disabled;?> type="text" name="pekerjaan_ibu_kandung" value="<?php echo $data->pekerjaan_ibu_kandung;?>" class="form-control" placeholder="Pekerjaan Ibu Kandung" maxlength="50">
+        <input readonly <?=$disabled;?> type="text" name="pekerjaan_ibu_kandung" value="<?php echo $data->pekerjaan_ibu_kandung;?>" class="text-uppercase form-control" placeholder="Pekerjaan Ibu Kandung" maxlength="50">
         </div>  
         <div class="form-group">
         <label for=""><b>PENGHASILAN IBU KANDUNG :</b></label>
@@ -179,12 +180,12 @@
         <div class="container">
         <div class="form-group">
         <label for=""><b>NAMA AYAH : </b></label>
-        <input readonly  <?=$disabled;?> type="text" name="nama_ayah" value="<?php echo $data->nama_ayah;?>" class="form-control" placeholder="Nama Ayah" maxlength="190">
+        <input readonly  <?=$disabled;?> type="text" name="nama_ayah" value="<?php echo $data->nama_ayah;?>" class="text-uppercase form-control" placeholder="Nama Ayah" maxlength="190">
         </div>  
 
         <div class="form-group">
         <label for=""><b>PEKERJAAN AYAH :</b></label>
-        <input readonly  <?=$disabled;?> type="text" name="pekerjaan_ayah" value="<?php echo $data->pekerjaan_ayah;?>" class="form-control" placeholder="Pekerjaan Ayah" maxlength="50">
+        <input readonly  <?=$disabled;?> type="text" name="pekerjaan_ayah" value="<?php echo $data->pekerjaan_ayah;?>" class="text-uppercase form-control" placeholder="Pekerjaan Ayah" maxlength="50">
         </div>  
         <div class="form-group">
         <label for=""><b>PENGHASILAN AYAH :</b></label>
@@ -209,12 +210,12 @@
     <div class="container">
         <div class="form-group">
         <label for=""><b>NAMA WALI : </b></label>
-        <input readonly  <?=$disabled;?> type="text" name="nama_wali" value="<?php echo $data->nama_wali;?>" placeholder="Nama Wali" class="form-control" maxlength="190">
+        <input readonly  <?=$disabled;?> type="text" name="nama_wali" value="<?php echo $data->nama_wali;?>" placeholder="Nama Wali" class="text-uppercase form-control" maxlength="190">
         </div>  
 
         <div class="form-group">
         <label for=""><b>PEKERJAAN WALI :</b></label>
-        <input readonly  <?=$disabled;?> type="text" name="pekerjaan_wali" value="<?php echo $data->pekerjaan_wali;?>" placeholder="Pekerjaan Wali" class="form-control" maxlength="50">
+        <input readonly  <?=$disabled;?> type="text" name="pekerjaan_wali" value="<?php echo $data->pekerjaan_wali;?>" placeholder="Pekerjaan Wali" class="text-uppercase form-control" maxlength="50">
         </div>  
         <div class="form-group">
         <label for=""><b>PENGHASILAN WALI :</b></label>

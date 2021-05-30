@@ -81,7 +81,7 @@
         <button type="submit" class="btn btn-primary font-weight-bold btn-block" style="margin-bottom:14px;">CARI DATA</button>
         </form>
         <p class="text-dark font-weight-bold text-center">ATAU</p>
-        <a href="<?=base_url('hal/tanpanisn');?>" class="btn btn btn-dark btn-block text-uppercase font-weight-bold">PENDAFTARAN NON NISN</a>
+        <a href="<?=base_url('hal/tanpanisn');?>" class="btn btn btn-dark btn-block text-uppercase font-weight-bold">PENDAFTARAN NON NISN/SEKOLAH LUAR KABUPATEN</a>
 
       </div>
 

@@ -404,6 +404,17 @@ class M_ppdb extends CI_Model
         LEFT JOIN datasiswa ON pengguna.id_pesertadidik = datasiswa.id_pesertadidik
         LEFT JOIN data_sd ON datasiswa.id_sekolah = data_sd.id_sekolah WHERE pengguna.id_pesertadidik='$id' ");
     }
+    
+     public function tampilpengguna_siswa($id)
+    {
+        return $this->db->query("SELECT data_sd.nama_sekolah,pengguna.status,datasiswa.id_pesertadidik,datasiswa.id_sekolah,datasiswa.kode_wilayah,datasiswa.nama_siswa,datasiswa.tempat_lahir,datasiswa.tanggal_lahir,datasiswa.jk,
+datasiswa.nik,datasiswa.nisn,datasiswa.alamat_jalan,datasiswa.desa_kelurahan,datasiswa.rt ,datasiswa.rw,
+datasiswa.nama_dusun,datasiswa.nama_ibu_kandung,datasiswa.pekerjaan_ibu_kandung,datasiswa.penghasilan_ibu_kandung,datasiswa.nama_ayah,pekerjaan_ayah,
+datasiswa.penghasilan_ayah,datasiswa.nama_wali,datasiswa.pekerjaan_wali,datasiswa.penghasilan_wali,datasiswa.kebutuhan_khusus,datasiswa.no_kip,datasiswa.no_pkh,datasiswa.lintang,datasiswa.bujur
+ FROM pengguna
+LEFT JOIN datasiswa ON pengguna.id_pesertadidik = datasiswa.id_pesertadidik
+LEFT JOIN data_sd ON datasiswa.id_sekolah = data_sd.id_sekolah WHERE pengguna.id_pesertadidik='$id' ");
+    }
 
     public function tampil_keterangan($id_pesertadidik)
     {

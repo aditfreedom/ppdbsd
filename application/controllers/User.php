@@ -35,7 +35,7 @@ class User extends CI_Controller
     public function isi_formulir($id)
     {
         $sess_data = $this->session->userdata();
-        $data['isi_formulir'] = $this->M_ppdb->tampilpengguna($id)->result();
+        $data['isi_formulir'] = $this->M_ppdb->tampilpengguna_siswa($id)->result();
         $data['isi_formulir2'] = $this->M_ppdb->tampilpengguna2($id)->result();
         $data['isi_formulir3'] = $this->M_ppdb->tampilpengguna3('pengguna')->result();
         $this->load->view('template/header');

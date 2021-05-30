@@ -126,7 +126,7 @@
             
             <div id="sisa_kuota" class="mb-3"></div>
 
-            <button type="submit" id="btn" class="btn btn-primary font-weight-bold" style="width:100%;">SIMPAN DATA</button><br><br>
+            <button <?=$disabled;?> type="submit" id="btn" class="btn btn-primary font-weight-bold" style="width:100%;">SIMPAN DATA</button><br><br>
       </form>
 
     </div>

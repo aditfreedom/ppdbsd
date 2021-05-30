@@ -59,11 +59,10 @@
           <strong><h2 class="text-bold mb-0">Selamat Anda Dinyatakan Lulus!</h2>
 	             Silahkan Melakukan Pendaftaran Ulang Ke Sekolah Tujuan Dengan Membawa :</strong>
           <ul>
-          <li>Foto Copy KK</li>
+          <li>Foto Copy KK/Surat Keterangan Domisili</li>
           <li>Foto Copy KTP Orang Tua</li>
           <li>Foto Copy Akte Kelahiran</li>
           <li>Foto Copy Kartu NISN</li>
-          <li>Print Out Formulir Pendaftaran (Klik Untuk Download)</li>
           <li>Semua Berkas Dimasukkan Ke Dalam :</li>
           </ul>
           <b><a href="#" class="btn btn-primary text-decoration-none rounded-pill"><b>Zonasi :  Map Biru</b></a> 
