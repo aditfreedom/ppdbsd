@@ -145,7 +145,7 @@ class M_ppdb extends CI_Model
 
     public function tampil_data_sekolahtujuan_admin($id_pesertadidik)
     {
-        return $this->db->query("SELECT * FROM sekolah_tujuan 
+        return $this->db->query("SELECT sekolah_tujuan.*, jenis_pendaftaran.nama, data_wilayah.nama_wilayah, data_desa.nama_desa, data_smp.nama_sekolah FROM sekolah_tujuan 
                                 LEFT JOIN jenis_pendaftaran ON sekolah_tujuan.jenis_pendaftaran = jenis_pendaftaran.id_jenis
                                 LEFT JOIN data_wilayah ON sekolah_tujuan.kode_wilayah = data_wilayah.kode_wilayah
                                 LEFT JOIN data_desa ON sekolah_tujuan.id_desa = data_desa.id_desa
@@ -405,6 +405,12 @@ class M_ppdb extends CI_Model
         LEFT JOIN data_sd ON datasiswa.id_sekolah = data_sd.id_sekolah WHERE pengguna.id_pesertadidik='$id' ");
     }
     
+        public function tampilpengguna222($id)
+    {
+        return $this->db->query("SELECT * FROM pengguna
+        LEFT JOIN datasiswa ON pengguna.id_pesertadidik = datasiswa.id_pesertadidik
+        LEFT JOIN data_sd ON datasiswa.id_sekolah = data_sd.id_sekolah WHERE pengguna.id_pesertadidik='$id' ");
+    }
      public function tampilpengguna_siswa($id)
     {
         return $this->db->query("SELECT data_sd.nama_sekolah,pengguna.status,datasiswa.id_pesertadidik,datasiswa.id_sekolah,datasiswa.kode_wilayah,datasiswa.nama_siswa,datasiswa.tempat_lahir,datasiswa.tanggal_lahir,datasiswa.jk,
